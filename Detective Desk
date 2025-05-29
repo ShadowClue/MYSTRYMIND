@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Detective Desk</title>
+  <style>
+    body {
+      font-family: 'Courier New', monospace;
+      background-color: #121212;
+      color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #1e1e1e;
+      padding: 20px;
+      text-align: center;
+      border-bottom: 2px solid #444;
+    }
+    h1 {
+      margin: 0;
+      font-size: 2.5em;
+    }
+    nav {
+      background: #222;
+      padding: 10px;
+      text-align: center;
+    }
+    nav a {
+      color: #f5f5f5;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+    }
+    section {
+      padding: 20px;
+    }
+    .case {
+      border: 1px solid #444;
+      padding: 15px;
+      margin: 15px 0;
+      background-color: #1e1e1e;
+    }
+    label, input, textarea {
+      display: block;
+      margin: 10px 0;
+      width: 100%;
+    }
+    input, textarea {
+      padding: 10px;
+      background: #333;
+      color: #f5f5f5;
+      border: 1px solid #555;
+    }
+    button {
+      background: #444;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    button:hover {
+      background: #666;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Detective Desk</h1>
+    <p>Welcome, Detective. Ready to solve your next case?</p>
+  </header>
+
+  <nav>
+    <a href="#case-files">Case Files</a>
+    <a href="#solve">Solve a Case</a>
+  </nav>
+
+  <section id="case-files">
+    <h2>📂 Case Files</h2>
+    <div class="case">
+      <h3>The Case of the Missing Muffin</h3>
+      <p><strong>Summary:</strong> At exactly 3:00 PM, the bakery's famous blueberry muffin vanished from the display. Three people were near the counter: the baker, a customer, and the cleaner.</p>
+      <ul>
+        <li><strong>Baker:</strong> Claims she was in the kitchen the whole time.</li>
+        <li><strong>Customer:</strong> Says they were browsing but saw no one take anything.</li>
+        <li><strong>Cleaner:</strong> Was mopping the floor and had earbuds in.</li>
+      </ul>
+      <p><strong>Clue:</strong> A sticky blueberry fingerprint was found on the napkin tray.</p>
+    </div>
+  </section>
+
+  <section id="solve">
+    <h2>🕵️ Solve the Case</h2>
+    <form onsubmit="return checkAnswer(event)">
+      <label for="suspect">Who do you think took the muffin?</label>
+      <input type="text" id="suspect" name="suspect" placeholder="Type suspect name..." required />
+      <button type="submit">Submit Answer</button>
+      <p id="result"></p>
+    </form>
+  </section>
+
+  <script>
+    function checkAnswer(event) {
+      event.preventDefault();
+      const suspect = document.getElementById("suspect").value.trim().toLowerCase();
+      const result = document.getElementById("result");
+
+      if (suspect === "cleaner") {
+        result.textContent = "✅ Correct! The cleaner had sticky fingers — literally.";
+        result.style.color = "lightgreen";
+      } else {
+        result.textContent = "❌ Not quite. Re-examine the clues, detective.";
+        result.style.color = "salmon";
+      }
+    }
+  </script>
+</body>
+</html>
